@@ -17,7 +17,7 @@
     </div>
 @endif
 
-<form action="/upload" method="POST" enctype="multipart/form-data">
+<form action="/" method="POST" enctype="multipart/form-data">
     @csrf
     <div>
         <label for="image">Choose an image to upload</label>
