@@ -29,8 +29,8 @@ class VisitorController extends Controller
                 'country' => $locationData['country'],
                 'region' => $locationData['region'],
                 'timezone' => $locationData['timezone'],
-                'latitude' => $locationData['latitude'], 
-                'longitude' => $locationData['longitude'], 
+                'latitude' => $locationData['latitude'],
+                'longitude' => $locationData['longitude'],
             ]);
 
         return new VisitorResource($visitor);
@@ -43,20 +43,16 @@ class VisitorController extends Controller
         if ($response->successful()) {
 
             // dapatkan latitude dan logitude
-            $location = $response->json()['loc'] ?? '0,0'; 
-            if (strpos($location, ',') !== false){
-                $locationParts = explode(',', $location);
-            } else {
-                $locationParts = ['0','0'];
-            }
+            $location = $response->json()['loc'] ?? '0,0';
+            $locationParts = explode(',', $location);
 
             return [
                 'city' => $response->json()['city'] ?? 'Unknown City',
                 'country' => $response->json()['country'] ?? 'Unknown Country',
                 'region' => $response->json()['region'] ?? 'Unknown Region',
                 'timezone' => $response->json()['timezone'] ?? 'UTC',
-                'latitude' => $locationParts[0] ?? '0', 
-                'longitude' => $locationParts[1] ?? '0', 
+                'latitude' => $locationParts[0] ?? '0',
+                'longitude' => $locationParts[1] ?? '0',
             ];
         }
 
@@ -65,7 +61,7 @@ class VisitorController extends Controller
             'country' => 'Unknown Country',
             'region' => 'Unknown Region',
             'timezone' => 'Unknown Timezone',
-            'latitude' => '0', 
+            'latitude' => '0',
             'longitude' => '0'
         ];
     }
