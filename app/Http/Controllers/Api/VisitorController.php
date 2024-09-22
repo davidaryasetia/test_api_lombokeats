@@ -42,7 +42,7 @@ class VisitorController extends Controller
         $response = Http::get("https://ipinfo.io/{$ip}?token=12d62dc0bbfec9");
         if ($response->successful()) {
 
-            // dapatkan latitude dan logitude
+            // mendapatkan latitude dan longitude
             $location = $response->json()['loc'] ?? '0,0';
             $locationParts = explode(',', $location);
 
